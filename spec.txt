@@ -1,0 +1,168 @@
+
+
+
+
+Web Authorization Protocol                                     J. Hanson
+Internet-Draft                                                      Okta
+Intended status: Standards Track                      September 25, 2020
+Expires: March 29, 2021
+
+
+                        Well-Known DNS Subdomain
+                draft-hanson-well-known-dns-subdomain-00
+
+Abstract
+
+   This memo defines a subdomain for "well-known locations", "well-
+   known".
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on March 29, 2021.
+
+Copyright Notice
+
+   Copyright (c) 2020 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+
+Hanson                   Expires March 29, 2021                 [Page 1]
+
+Internet-Draft               OAuth 2.0 SCSS               September 2020
+
+
+1.  Introduction
+
+   Web-based protocols often require the discovery of resources or
+   metadata associated with a host.  Use of Well-Known Uniform Resource
+   Identifers (URIs) [RFC8615] addresses this problem by reserving a
+   path prefix, "/.well-known/", which can be used by protocols that
+   need to define a resource for such metadata.
+
+   This prefix has been adopted by numerous protocols, either directly
+   or indirectly through higher-level discovery protocols such as
+   WebFinger [RFC7033].  For example, OpenID Connect uses well-known
+   locations to discover the identity provider for a person as well as
+   to discover metadata about the identity provider.
+
+   The hosting of services that implement these protocols is often
+   delegated to a third-party service provider.  For instance,
+   acme.example may delegate identity services to idaas.example.
+   Typically, such delegation is accompanied by a DNS CNAME record from
+   id.acme.example to acme.idaas.example.
+
+   While it is possible to delegate the service itself, discovery of
+   that service using well-known URIs remains undelegated, as it occurs
+   via the well-known location on the parent domain.  For instance,
+   acme.example must provide a WebFinger service at
+   'https://acme.example/.well-known/webfinger' to allow applications to
+   discover the delegation of OpenID Connect to acme.idaas.example.
+
+   Deployment experience suggests that the inability to delegate
+   discovery in the same manner as delegating the service to be
+   discovered negatively impacts the discovery of such protocols - to
+   the point of discovery not being deployed and therefore unavailable
+   to applications.
+
+   To address this, this memo reserves a DNS subdomain, "well-known".
+   Protocols can register their use of this subdomain in order to host
+   resources or metadata needed for discovery.
+
+2.  Normative References
+
+   [RFC7033]  Jones, P., Salgueiro, G., Jones, M., and J. Smarr,
+              "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
+              2013, <https://www.rfc-editor.org/info/rfc7033>.
+
+   [RFC8615]  Nottingham, M., "Well-Known Uniform Resource Identifiers
+              (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
+              <https://www.rfc-editor.org/info/rfc8615>.
+
+
+
+
+
+Hanson                   Expires March 29, 2021                 [Page 2]
+
+Internet-Draft               OAuth 2.0 SCSS               September 2020
+
+
+Author's Address
+
+   Jared Hanson
+   Okta
+
+   Email: jared.hanson@okta.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanson                   Expires March 29, 2021                 [Page 3]
