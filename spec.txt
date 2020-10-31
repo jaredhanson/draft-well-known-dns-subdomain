@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                     J. Hanson
 Internet-Draft                                                      Okta
-Intended status: Standards Track                      September 25, 2020
-Expires: March 29, 2021
+Intended status: Standards Track                        October 30, 2020
+Expires: May 3, 2021
 
 
                         Well-Known DNS Subdomain
@@ -31,7 +31,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 29, 2021.
+   This Internet-Draft will expire on May 3, 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hanson                   Expires March 29, 2021                 [Page 1]
+Hanson                     Expires May 3, 2021                  [Page 1]
 
-Internet-Draft               OAuth 2.0 SCSS               September 2020
+Internet-Draft               OAuth 2.0 SCSS                 October 2020
 
 
 1.  Introduction
@@ -67,16 +67,16 @@ Internet-Draft               OAuth 2.0 SCSS               September 2020
    need to define a resource for such metadata.
 
    This prefix has been adopted by numerous protocols, either directly
-   or indirectly through higher-level discovery protocols such as
-   WebFinger [RFC7033].  For example, OpenID Connect uses well-known
-   locations to discover the identity provider for a person as well as
-   to discover metadata about the identity provider.
+   or indirectly through discovery protocols such as WebFinger
+   [RFC7033].  For example, OpenID Connect uses well-known locations to
+   discover the identity provider for a person as well as to discover
+   metadata about the identity provider.
 
    The hosting of services that implement these protocols is often
    delegated to a third-party service provider.  For instance,
    acme.example may delegate identity services to idaas.example.
-   Typically, such delegation is accompanied by a DNS CNAME record from
-   id.acme.example to acme.idaas.example.
+   Typically, such delegation is accompanied by a DNS CNAME record
+   aliasing id.acme.example to acme.idaas.example.
 
    While it is possible to delegate the service itself, discovery of
    that service using well-known URIs remains undelegated, as it occurs
@@ -95,24 +95,53 @@ Internet-Draft               OAuth 2.0 SCSS               September 2020
    Protocols can register their use of this subdomain in order to host
    resources or metadata needed for discovery.
 
-2.  Normative References
+2.  Notational Conventions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+
+
+
+
+
+
+Hanson                     Expires May 3, 2021                  [Page 2]
+
+Internet-Draft               OAuth 2.0 SCSS                 October 2020
+
+
+3.  Well-Known Subdomains
+
+   A well-known subdomain is a domain name that contains the label
+   "well-known", prefixed by a label registered to an application
+   utilizing well-known subdomains.
+
+   For example, if an application registers the label 'example', the
+   corresponding well-known subdomain of 'example.com' would be
+   'example.well-known.example.com'.
+
+4.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC7033]  Jones, P., Salgueiro, G., Jones, M., and J. Smarr,
               "WebFinger", RFC 7033, DOI 10.17487/RFC7033, September
               2013, <https://www.rfc-editor.org/info/rfc7033>.
 
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
    [RFC8615]  Nottingham, M., "Well-Known Uniform Resource Identifiers
               (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
               <https://www.rfc-editor.org/info/rfc8615>.
-
-
-
-
-
-Hanson                   Expires March 29, 2021                 [Page 2]
-
-Internet-Draft               OAuth 2.0 SCSS               September 2020
-
 
 Author's Address
 
@@ -136,33 +165,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hanson                   Expires March 29, 2021                 [Page 3]
+Hanson                     Expires May 3, 2021                  [Page 3]

@@ -5,6 +5,8 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY RFC8615 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8615.xml">
 <!ENTITY RFC7033 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7033.xml">
+<!ENTITY RFC2119 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC8174 SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml">
 ]>
 
 
@@ -20,7 +22,7 @@
       </address>
     </author>
 
-    <date year="2020" month="September" day="25"/>
+    <date year="2020" month="October" day="30"/>
 
     <area>Security</area>
     <workgroup>Web Authorization Protocol</workgroup>
@@ -49,15 +51,15 @@ associated with a host.  Use of Well-Known Uniform Resource Identifers (URIs)
 which can be used by protocols that need to define a resource for such metadata.</t>
 
 <t>This prefix has been adopted by numerous protocols, either directly or
-indirectly through higher-level discovery protocols such as WebFinger
-<xref target="RFC7033"/>.  For example, OpenID Connect uses well-known locations to discover
-the identity provider for a person as well as to discover metadata about the
-identity provider.</t>
+indirectly through discovery protocols such as WebFinger <xref target="RFC7033"/>.  For
+example, OpenID Connect uses well-known locations to discover the identity
+provider for a person as well as to discover metadata about the identity
+provider.</t>
 
 <t>The hosting of services that implement these protocols is often delegated to a
 third-party service provider.  For instance, acme.example may delegate identity
 services to idaas.example.  Typically, such delegation is accompanied by a DNS
-CNAME record from id.acme.example to acme.idaas.example.</t>
+CNAME record aliasing id.acme.example to acme.idaas.example.</t>
 
 <t>While it is possible to delegate the service itself, discovery of that service
 using well-known URIs remains undelegated, as it occurs via the well-known location
@@ -75,6 +77,25 @@ can register their use of this subdomain in order to host resources or metadata
 needed for discovery.</t>
 
 </section>
+<section anchor="notational-conventions" title="Notational Conventions">
+
+<t>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
+NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “NOT RECOMMENDED”,
+“MAY”, and “OPTIONAL” in this document are to be interpreted as
+described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they
+appear in all capitals, as shown here.</t>
+
+</section>
+<section anchor="well-known-subdomains" title="Well-Known Subdomains">
+
+<t>A well-known subdomain is a domain name that contains the label “well-known”,
+prefixed by a label registered to an application utilizing well-known
+subdomains.</t>
+
+<t>For example, if an application registers the label ‘example’, the corresponding
+well-known subdomain of ‘example.com’ would be ‘example.well-known.example.com’.</t>
+
+</section>
 
 
   </middle>
@@ -85,6 +106,8 @@ needed for discovery.</t>
 
 &RFC8615;
 &RFC7033;
+&RFC2119;
+&RFC8174;
 
 
     </references>
@@ -95,30 +118,36 @@ needed for discovery.</t>
   </back>
 
 <!-- ##markdown-source:
-H4sIAPFlbl8AA4VVXW/cNhB856/Yug9pgdPZbdAP3FMNu0adIklhx+jzStw7
-sZZIlaTufA383zukdJKcJijggyGJuzs7M7ssikJpV1luZUPa8zYWNdvgbHGQ
-pikerTvYQttQhL7UrmVji4sLVXGUnfPHDYWolYomNgj/M0X8niLo+t093Z8i
-FJell/2G3l/2sabv1xd0f3V/rxhPzm8UUYEfkbFhQ2/W9FsGkF8NuN6wF718
-7fwO2R4j5ydBkWZDf6VT6wH9Lw4f15VrlcJb3tC9VL038agOzj/uvOu7hLek
-y4zB/MPROEt/eBdd5RqliqIgLkP0XEWlPtQmUCutIy1bYyUQ00QIbZ2ns5ku
-alyV04Wz1fL92XpI2xqtG1Hqa7q10TvdV+mwUoBTlBzQaTfCCOS2USx5+bs3
-XijWQtqEyu3FH/ENH4LrfQU8gNBKZM3ghENwlYFEmg4GhDPVLsQ10UOQFLXQ
-6cEaoG/pbkxEt1psNFvxgb55uLsN36qPH7+6u7n6+cfvfnh+JtYaNQMKxkQJ
-gJaNtFQeExTxe2N3KNcxqnYeVD2BgfP1zMH52UodalPVVLGlUqhP/SJ8bjnW
-HMkKXscT3Uh56jSTHXokOLW7HuUZ6lHNAXlBGmvXxSG57VuB5GGusiIBM+JB
-p5cqNmDTK2Onp1jj/K6m2uxwqmhkL82C+hlthoKSEO8GzYsf+frp4vXr52dw
-fgO88sRt18iK3ndib6/pylmLOqn5QJ8zTm59rKaS6ibLEnPlPR585gFMQyj4
-loc06f8icqIITnZ9TPZR/0mU6ZPskCQe7JF1rGRUwiTkLYJSOPwzt25O9tTS
-yC7bDcUZeI3XRcceVcZcc7WBEEx6ZFuBEa5aWY/8UMvHKdnUsprxOLxkDqfz
-SPbh2JmKm+a4GpQYo9MsAx5X2AAdWzPYgNNaUlfvLt/+Cj9Vzmvaetci6foF
-jNRFen5ZDANaG3w1MaXuXAimHA5PkJNSp45NDNJsVy/nNTM6nlB9SIQv5E/z
-BmBppwTq7UTrKumKsq7CDgu0N5wrfcY4Cn2nTyA/KTbsp//hvA/xJA8Ymnw8
-wQTiV3WMXdicny8jX4z1QcptDnuV2WsadyDuusZ8ydALocDLJ3PxJQGupWvc
-MZtRnmB9I+gHwu92EuLo1zwtlkvTJJcv1ZmVMJklFXC5wHOo6RPDJ0gQZSkk
-UpRzMJxk8ykshGMaDtwPIWd7IXQ24zwqRcqShXEG4HFgPm1dRIFUVef2UIGt
-TiRhoTls/d7yHhccj25b0pqG152Wcl7Jq2Ex57tqWMn5skr38XRhfXIr0XTt
-BZW2spedCRGcAILxaUkN1jVhcefhD/OTDrm8O75wFaU9jobSspo6Bmj1L4GT
-Iyt3CAAA
+H4sIACKqnF8AA4VW23LbNhB9x1ds1Qe3M6JsJ2nT6qmu7Uyc2lZq2dPpI0hC
+ImoKYAFQspLxv/Rb+mU9C16VcaYz9ogA93r27C6TJBG5zYzcqDnlTq5CUkjj
+rUl2qiyTR2N3JsmNT3yd5nYjtUlOTkQmg1pbt5+TD7kQQYcS6n+wxm+sQRe3
+S1p2GkKmqVPbOS3O6lDQq9kJLc+XSyFxsm4uiBL8E2nj5/RhRu9jAPGqieuD
+dCofX1u3hrXHIONJwUk5p79YatZE/4vFy1lmN0LgVs5pqbLa6bAXO+se187W
+Fceb0lmMQX+SQVtDH50NNrOlEEmSkEx9cDILQtwX2tNGbSzlaqWN8iSpB4RW
+1tFkgItKm0VzfjId309mjdmNzvNSCfEtXZngbF5nLCwEwklS6ZFp1Ybhya6C
+MuTU37V2ikKhKNc+s1vl9niHF97WLkM8CGGjgswlMJHe20yjRDntNACXVFgf
+ZkQPXrHWqE4PRiP6Dd21hugqVybolXKevnu4u/Lfi8+fv7l7d/7Tj6c/PD+T
+zHP49HAYGBIEmpZqQ+meQ1Fuq80a7ioJr5UDVE9A4Hg2YHA8mYpdobOCMmko
+VVRzvlAfUg6FDGQUrkMHN0x2mUawfQ0DXbqztjyNPyqkh12AJnNbhca4qTcK
+JfeDlykpIKMc4HQqCyXQdEKb/hQKyK+LEdpDgNE7vKBe75AvjDQQvT15/fr5
+GTC/gy31JDdVqaa0qJS5uqBzawxMc76eXuJKzLb1FgutYyXAWHje4uBi6gAX
+tQFVZWOGf8eaHSogr63Dy4YiYiqSgusFRsTSZaoFX3PkGyixOigzpK47Ruaq
+VOvIMDiXAmRweVJJF/adLeq9RUC4uYM0GRCR2UbNWnxoI/e9sSHSIR6LSyl9
+Jw9j9/tKZ7Is99OmEq02ty/CkxmavpJGN5WXPInE+e3ZzSUolFmXkyy19Jy3
+zmcHoXAmfD50iL4sNN7qwOYr671OG+E+bAa5y1oHr8rV9LBNI6qthKij8xEF
+uM0QHI8ST7XpoZ1ybeHWZhhdnrZaRk8vkEcgd36FAnDVmrH0P7jXPnQlAkoD
+l7swEfFREULl58fHY82Dbt6pdBXVjiJ6ZWl3JKuq1C+QWsTpNRQLuHzRG18r
+wIWqSruPhFRPoL9WyAfFX6+VDy1nI9GNTHUJ/hxUZ6iEjigJj50C3sGnY4S7
+kFCUcSFhIh2UwSYTpbYK0wENgrXgo7WDQkdCDu2SsJVYGKsRPAQGaWMDHLDX
+PKYHD9LkDBLmmMWwr43cYq/Jlm1jWLmBbTeL4ySeNvM4rqhmEscdxWu431Nf
+LCPqt50XPIydWmsfmuGjHQ+qhrraj1Yd/tBDLGTj/PjKBuLxjYR4YPUZz3jj
+3doQU5AlV33L7Y58mnn0qPaE7Zx7mtw8LO95efIv3S7i893l7w9Xd5cX/Lx8
+f3Z93T+IVmL5fvFwfTE8DZrni5uby9uLRhm3dHAlJjdnf+IN8KfJ4uP91eL2
+7HrS0AXZ4/OojuSTrqMFqqkcFg4PQOlFrnzmdIoDdH49//jvP6dv2qXw6vT0
+Z+zNdomevn2Dw65QpvFmDdjUHIH6XqDISnLPci9hRVY6SF5WoKkvuOOZHQAS
+SI6WeP+hBSDPxvNhVDdmQ/vM31RN02TWhDh1mKNgmioPKDIVzU7tRmkj0fGk
+nf1mzEyqAxrw0+GAE30YTFyeSf1y1KsvDXTWxzEdtfJHESVE7cC6ymJbm7V4
+MV0Qt1Pij8Aj8Kouc65cfz3ozcaSiBBflOI/4BkHKhcLAAA=
 
 -->
 
