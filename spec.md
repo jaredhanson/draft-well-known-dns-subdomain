@@ -3,7 +3,7 @@ docname: draft-hanson-well-known-dns-subdomain-00
 category: std
 
 title: Well-Known DNS Subdomain
-abbrev: OAuth 2.0 SCSS
+abbrev: Well-Known DNS
 author:
   -
     ins: J. Hanson
@@ -66,4 +66,7 @@ subdomains.
 For example, if an application registers the label 'example', the corresponding
 well-known subdomain of 'example.com' would be 'example.well-known.example.com'.
 
-   
+Resources or metadata obtained from a well-known subdomain are associated with
+the parent domain above the "well-known" label.  Effectively, this is a naming
+convention for hosting of resources that provide metadata about the parent
+domain.
