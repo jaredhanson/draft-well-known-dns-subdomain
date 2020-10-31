@@ -55,7 +55,7 @@ Copyright Notice
 
 Hanson                     Expires May 3, 2021                  [Page 1]
 
-Internet-Draft               OAuth 2.0 SCSS                 October 2020
+Internet-Draft               Well-Known DNS                 October 2020
 
 
 1.  Introduction
@@ -111,7 +111,7 @@ Internet-Draft               OAuth 2.0 SCSS                 October 2020
 
 Hanson                     Expires May 3, 2021                  [Page 2]
 
-Internet-Draft               OAuth 2.0 SCSS                 October 2020
+Internet-Draft               Well-Known DNS                 October 2020
 
 
 3.  Well-Known Subdomains
@@ -123,6 +123,11 @@ Internet-Draft               OAuth 2.0 SCSS                 October 2020
    For example, if an application registers the label 'example', the
    corresponding well-known subdomain of 'example.com' would be
    'example.well-known.example.com'.
+
+   Resources or metadata obtained from a well-known subdomain are
+   associated with the parent domain above the "well-known" label.
+   Effectively, this is a naming convention for hosting of resources
+   that provide metadata about the parent domain.
 
 4.  Normative References
 
@@ -149,11 +154,6 @@ Author's Address
    Okta
 
    Email: jared.hanson@okta.com
-
-
-
-
-
 
 
 

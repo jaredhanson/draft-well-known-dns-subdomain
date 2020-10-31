@@ -13,7 +13,7 @@
 <rfc docName="draft-hanson-well-known-dns-subdomain-00" category="std">
 
   <front>
-    <title abbrev="OAuth 2.0 SCSS">Well-Known DNS Subdomain</title>
+    <title abbrev="Well-Known DNS">Well-Known DNS Subdomain</title>
 
     <author initials="J." surname="Hanson" fullname="Jared Hanson">
       <organization>Okta</organization>
@@ -95,6 +95,11 @@ subdomains.</t>
 <t>For example, if an application registers the label ‘example’, the corresponding
 well-known subdomain of ‘example.com’ would be ‘example.well-known.example.com’.</t>
 
+<t>Resources or metadata obtained from a well-known subdomain are associated with
+the parent domain above the “well-known” label.  Effectively, this is a naming
+convention for hosting of resources that provide metadata about the parent
+domain.</t>
+
 </section>
 
 
@@ -118,36 +123,38 @@ well-known subdomain of ‘example.com’ would be ‘example.well-known.example
   </back>
 
 <!-- ##markdown-source:
-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
+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
+LZ4FDAAA
 
 -->
 
